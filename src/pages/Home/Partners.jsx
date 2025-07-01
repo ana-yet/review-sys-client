@@ -49,7 +49,7 @@ const ourPartners = [
 
 const Partners = () => {
   return (
-    <section className="">
+    <section className="py-22 max-w-7xl mx-auto ">
       <h2 className="text-center text-3xl font-bold py-6">
         Meet Our <span className="text-indigo-400">Partners</span>
         <p className="max-w-20 mx-auto  border-4 border-green-500 rounded-full my-4"></p>
