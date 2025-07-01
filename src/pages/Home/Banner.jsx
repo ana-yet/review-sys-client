@@ -20,7 +20,7 @@ const useInterval = (callback, delay) => {
 const slideData = [
   {
     id: 1,
-    image: "https://i.ibb.co/tT3Pjvdq/reviews.jpg",
+    image: "https://i.ibb.co/1Jjg7Mkf/review.jpg",
     headline: "Trusted Reviews, Real People",
     subtext: "Find or review services you care about.",
     cta: "Explore Services",
@@ -110,7 +110,7 @@ const Banner = ({ slides = slideData, autoPlayInterval = 5000 }) => {
 
   return (
     <div
-      className="relative w-full h-[500px] overflow-hidden"
+      className="relative w-full h-[calc(100vh-35vh)] mt-16 overflow-hidden mb-20"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
