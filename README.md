@@ -1,76 +1,70 @@
-# 📝 Service Review System
+# 🌟 Service Review System
 
-A full-featured web application where users can browse services, read and write reviews, rate services, and manage their own content securely using Firebase authentication.
+![Service Review System Screenshot](https://i.ibb.co/KDnR61k/service-review-banner.png)
 
-🔗 **Live Demo**: [https://review-system-app.web.app/](https://review-system-app.web.app/)
-
----
-
-## 🚀 Features
-
-- 🔐 Firebase Authentication (Google login)
-- 🌐 Browse all available services
-- 🔍 Filter and search services by category or keywords
-- ⭐ Submit reviews with ratings
-- 📄 View detailed service info and associated reviews
-- ✍️ Add, update, and delete your reviews
-- 🧑‍💼 User profile page with their data
-- 🎨 Beautiful and responsive UI using Tailwind CSS
-- ✅ Protected routes using `react-router`
-- 🍭 Animations with Framer Motion and Lottie
-- 📢 Toast notifications using React Toastify
-- 🧠 Real-time dynamic average ratings for each service
+**Service Review System** is a full-stack web application where users can explore services, add their own, and leave reviews with ratings. Built with the MERN stack, this project simulates a real-world service feedback system with user authentication and dynamic dashboard functionality.
 
 ---
 
-## 🛠️ Technologies Used
+## 🌐 Live and Source Links
 
-| Frontend                | Backend    |
-| ----------------------- | ---------- |
-| React 19                | Node.js    |
-| React Router v7         | Express.js |
-| Tailwind CSS            | MongoDB    |
-| Firebase Authentication |            |
-| Axios                   |            |
-
-Other Libraries:
-
-- `react-icons`
-- `react-helmet-async`
-- `sweetalert2`
-- `lottie-react`
-- `framer-motion`
-- `nanoid`
-- `react-toastify`
-- `react-countup`
-- `react-intersection-observer`
+- 🚀 **Live Site**: [https://review-system-app.web.app/](https://review-system-app.web.app/)
+- 💻 **Frontend Repository**: [Click here](https://github.com/ana-yet/service-review-client)
+- 🔧 **Backend Repository**: [Click here](https://github.com/ana-yet/service-sys-server)
 
 ---
 
-## 📦 Project Structure
+## 🛠️ Tech Used
 
-```
-client/
-├── src/
-│ ├── components/ # Reusable components
-│ ├── pages/ # All pages (Home, Services, Profile, etc.)
-│ ├── routes/ # React Router setup
-│ ├── hooks/ # Custom hooks like useAuth
-│ ├── assets/ # Images, animations (Lottie), etc.
-│ ├── App.jsx
-│ └── main.jsx
-server/
-├── index.js # Main Express server
-├── routes/ # API endpoints (services, reviews)
-├── controllers/ # Controller logic for routes
-├── db.js # MongoDB connection
-└── .env
+### ✅ Frontend Technologies
+- **React** – ^19.1.0  
+- **React Router** – ^7.6.2  
+- **Tailwind CSS** – ^4.1.10  
+- **Axios** – ^1.9.0  
+- **Firebase (Auth)** – ^11.9.1  
+- **Framer Motion** – ^12.18.1  
+- **Lottie React** – ^2.4.1  
+- **NanoID** – ^5.1.5  
+- **React CountUp** – ^6.5.3  
+- **React Helmet Async** – ^2.0.5  
+- **React Icons** – ^5.5.0  
+- **React Intersection Observer** – ^9.16.0  
+- **React Toastify** – ^11.0.5  
+- **SweetAlert2** – ^11.22.0  
+- **@tailwindcss/vite** – ^4.1.10  
+
+### ✅ Backend Technologies
+- **Node.js**  
+- **Express.js**  
+- **MongoDB**  
+- **Firebase Admin SDK** (for verifying user tokens)
+
+---
+
+## ✨ Core Features
+
+- 🔐 Firebase authentication for secure login/logout
+- ➕ Add new services with title, image, description, category, and price
+- ⭐ Users can leave reviews and star ratings for services
+- 📝 View, edit, and delete personal reviews
+- 📊 Average rating and review count visible for each service
+- 🎛️ User dashboard showing personal services and reviews
+- 📱 Responsive UI for mobile and desktop devices
+- 🔍 Filter/search services by category or name
+
+---
+
+## ⚙️ Installation Guide (Run Locally)
+
+### 🧑‍💻 Client Setup
+
+```bash
+git clone https://github.com/ana-yet/service-review-client.git
+cd service-review-client
+npm install
+npm run dev
 ```
 
-## 🙏 Credits
-
-This project was developed as part of a full-stack assignment. Special thanks to the community and open-source libraries that made it possible.
-
-## Creator
-
-Anayet
+## 👨‍💻 Developer
+### MD Anayet Miah
+#### MERN Stack Developer in training. Building real-world applications through hands-on projects and consistent learning.

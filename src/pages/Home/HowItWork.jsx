@@ -59,7 +59,7 @@ const HowItWorks = () => {
   };
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section className="py-22 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,9 +67,9 @@ const HowItWorks = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+          <h2 className="text-3xl font-bold text-gray-800">
             How It <span className="text-indigo-400">Works</span>
-            <p className="max-w-20 mx-auto  border-4 border-green-500 rounded-full my-4"></p>
+            <p className="max-w-20 mx-auto  border-4 border-indigo-400 rounded-full my-4"></p>
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
             Get the most out of our service review platform in just three simple
