@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 const ServiceCard = ({ service }) => {
   const navigate = useNavigate();
 
+  console.log(service);
+
   return (
     <motion.div
       className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow duration-300"

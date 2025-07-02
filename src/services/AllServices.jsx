@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { nanoid } from "nanoid";
 import { Helmet } from "react-helmet-async";
+import ServiceTable from "../components/ServiceTable";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);
@@ -14,6 +15,8 @@ const AllServices = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [list, setList] = useState(false);
+  const [style, setStyle] = useState("card");
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -75,6 +78,12 @@ const AllServices = () => {
     setFilteredServices(filtered);
   }, [searchTerm, selectedCategory, services]);
 
+  const handleChange = (event) => {
+    setStyle(event.target.value);
+  };
+
+  console.log(style);
+
   return (
     <div className="min-h-screen pb-10 py-22 mt-8 px-4 sm:px-6 lg:px-8">
       <Helmet>
@@ -94,7 +103,7 @@ const AllServices = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <div className="relative">
             <FaSearch className="absolute left-3 top-3 text-gray-400" />
             <input
@@ -105,6 +114,15 @@ const AllServices = () => {
               className="w-full pl-10 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
+
+          <select
+            value={style}
+            onChange={handleChange}
+            className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-gray-700"
+          >
+            <option value="card">Card</option>
+            <option value="table">Table</option>
+          </select>
 
           <select
             value={selectedCategory}
@@ -138,11 +156,15 @@ const AllServices = () => {
         {!loading && !error && (
           <>
             {filteredServices.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {filteredServices.map((service) => (
-                  <ServiceCard key={nanoid()} service={service} />
-                ))}
-              </div>
+              style === "card" ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                  {filteredServices.map((service) => (
+                    <ServiceCard key={nanoid()} service={service} />
+                  ))}
+                </div>
+              ) : (
+                <ServiceTable services={filteredServices} />
+              )
             ) : (
               <div className="text-center py-20 text-gray-500">
                 <svg
