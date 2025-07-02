@@ -76,7 +76,7 @@ const AllServices = () => {
   }, [searchTerm, selectedCategory, services]);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pb-10 py-22 mt-8 px-4 sm:px-6 lg:px-8">
       <Helmet>
         <title>All Service | Review System</title>
         <meta
@@ -86,7 +86,7 @@ const AllServices = () => {
       </Helmet>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+          <h1 className="text-3xl font-bold text-gray-900 ">
             Explore Services
           </h1>
           <p className="mt-2 text-gray-600">
@@ -120,7 +120,7 @@ const AllServices = () => {
         </div>
 
         {loading && (
-          <div className="flex justify-center items-center py-20">
+          <div className="flex justify-center items-center py-20 h-screen">
             <FaSpinner className="animate-spin h-10 w-10 text-blue-600" />
             <span className="ml-4 text-gray-600 text-lg">
               Loading services...
@@ -138,7 +138,7 @@ const AllServices = () => {
         {!loading && !error && (
           <>
             {filteredServices.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 {filteredServices.map((service) => (
                   <ServiceCard key={nanoid()} service={service} />
                 ))}

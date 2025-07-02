@@ -52,7 +52,7 @@ const Partners = () => {
     <section className="py-22 max-w-7xl mx-auto ">
       <h2 className="text-center text-3xl font-bold py-6">
         Meet Our <span className="text-indigo-400">Partners</span>
-        <p className="max-w-20 mx-auto  border-4 border-green-500 rounded-full my-4"></p>
+        <p className="max-w-20 mx-auto  border-4 border-indigo-400 rounded-full my-4"></p>
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0">
         {ourPartners.map((partner, index) => (
