@@ -191,7 +191,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4">
+    <div className="min-h-[100vh-10vh] mt-16 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4">
       <Helmet>
         <title>Register | Review System</title>
         <meta

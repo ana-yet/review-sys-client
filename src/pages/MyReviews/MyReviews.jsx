@@ -29,7 +29,7 @@ const MyReviews = () => {
 
   if (reviews.length === 0) {
     return (
-      <div className="text-center mt-20 text-gray-500 text-xl">
+      <div className="text-center h-[calc(100vh-30vh)] pt-32 text-gray-500 text-xl">
         You haven't submitted any reviews yet.
       </div>
     );

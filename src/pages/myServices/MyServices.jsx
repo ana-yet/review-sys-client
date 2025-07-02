@@ -24,8 +24,14 @@ const MyServices = () => {
   }, [loading, user?.email, setLoading, user, axiosSecure]);
 
   if (loading || !user) {
+    return setLoading(true);
+  }
+
+  if (services < 1) {
     return (
-      <div className="text-center mt-10 text-lg font-semibold">Loading...</div>
+      <h1 className="h-[calc(100vh-30vh)]  text-center pt-32">
+        No Data Available
+      </h1>
     );
   }
 

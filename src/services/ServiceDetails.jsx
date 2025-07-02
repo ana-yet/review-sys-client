@@ -28,7 +28,7 @@ const ServiceDetails = () => {
   }
 
   return (
-    <div className="bg-gray-100">
+    <div className="mt-16">
       <Helmet>
         <title>Details | Review System</title>
         <meta
@@ -36,9 +36,9 @@ const ServiceDetails = () => {
           content="Welcome to the Details of Review System"
         />
       </Helmet>
-      <h1 className="text-base md:text-3xl font-heading font-bold text-center py-7">
+      <h1 className="text-3xl font-heading font-bold text-center py-7">
         Details About
-        <span className="text-green-500"> {service.companyName}</span>
+        <span className="text-indigo-500"> {service.companyName}</span>
       </h1>
 
       <ServiceDetailsCard service={service} />

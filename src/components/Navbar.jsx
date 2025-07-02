@@ -6,6 +6,7 @@ import {
   FaPlus,
   FaBars,
   FaTimes,
+  FaUsers,
 } from "react-icons/fa";
 import {
   FiHome,
@@ -82,6 +83,11 @@ const Navbar = () => {
               to="/all-services"
               icon={<FiTool className="mr-1" />}
               text="Services"
+            />
+            <NavLink
+              to="/about-us"
+              icon={<FaUsers className="mr-1" />}
+              text="About Us"
             />
 
             {!user && (

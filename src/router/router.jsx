@@ -11,6 +11,7 @@ import MyReviews from "../pages/MyReviews/MyReviews";
 import Profile from "../pages/Profile/Profile";
 import PrivateRoute from "../context/PrivateRoute";
 import ErrorPage from "../pages/ErrorPage";
+import AboutUs from "../pages/About Us/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "all-services",
         element: <AllServices />,
+      },
+      {
+        path: "about-us",
+        Component: AboutUs,
       },
       {
         path: "my-services",

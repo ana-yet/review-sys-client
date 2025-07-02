@@ -35,7 +35,7 @@ const ServiceDetailsCard = ({ service }) => {
 
   return (
     <div className="flex items-center justify-center p-4">
-      <div className="bg-white shadow-lg rounded-lg max-w-4xl w-full mx-auto md:flex">
+      <div className="bg-white shadow-lg rounded-lg max-w-7xl w-full mx-auto md:flex">
         <div className="md:w-1/2">
           <img
             className="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"

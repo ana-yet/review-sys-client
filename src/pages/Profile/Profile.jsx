@@ -20,11 +20,11 @@ const Profile = () => {
     }
   }, [user?.email]);
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
+  if (loading) return <p className="text-center h-screen mt-10">Loading...</p>;
 
   return (
     <motion.div
-      className="max-w-md mx-auto h-[calc(100vh-417px)] mt-10 p-6 bg-white shadow-md rounded-lg text-center"
+      className="max-w-md mx-auto h-[calc(100vh-35vh)] mt-16 p-6 bg-white shadow-md rounded-lg text-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
