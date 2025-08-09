@@ -110,7 +110,7 @@ const Banner = ({ slides = slideData, autoPlayInterval = 5000 }) => {
 
   return (
     <div
-      className="relative w-full h-[calc(100vh-35vh)] mt-16 overflow-hidden mb-20"
+      className="relative w-full h-[calc(100vh-25vh)] overflow-hidden mb-16"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -127,11 +127,16 @@ const Banner = ({ slides = slideData, autoPlayInterval = 5000 }) => {
             opacity: { duration: 0.2 },
           }}
           className="absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${image})` }}
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${image})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
         >
           <div className="w-full h-full bg-black/50 flex items-center justify-center">
             <motion.div
-              className="px-6 text-white max-w-2xl text-center"
+              className="px-6 text-white max-w-3xl text-center"
               variants={textContainerVariants}
               initial="hidden"
               animate="visible"
