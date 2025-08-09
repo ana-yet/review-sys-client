@@ -10,6 +10,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { app } from "../firebase/firebase.init";
+import Loading from "../pages/Loading/Loading";
 
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
@@ -44,6 +45,10 @@ const AuthProvider = ({ children }) => {
       unSubscribe();
     };
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   const value = {
     createEmailUser,

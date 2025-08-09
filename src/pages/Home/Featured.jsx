@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import FeaturedCard from "../../components/FeaturedCard";
 import { nanoid } from "nanoid";
-import useAxiosSecure from "../../hook/AxiosSecure";
 
 const Featured = () => {
   const [data, setData] = useState([]);
+  console.log(data);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_SERVER_API}/featured`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
+
   return (
     <div className="max-w-7xl my-22 mx-auto">
       <div className="">

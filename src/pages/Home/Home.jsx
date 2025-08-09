@@ -20,7 +20,7 @@ const Home = () => {
       <Helmet>
         <title>Home | Review System</title>
         <meta
-          name="description"
+          name="Home page "
           content="Welcome to the homepage of Review System"
         />
       </Helmet>
