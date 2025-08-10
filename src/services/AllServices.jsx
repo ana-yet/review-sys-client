@@ -85,14 +85,15 @@ const AllServices = () => {
   console.log(style);
 
   return (
-    <div className="min-h-screen pb-10 py-22 mt-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pb-10  mt-8 px-4 sm:px-6 lg:px-8">
       <Helmet>
         <title>All Service | Review System</title>
         <meta
-          name="description"
-          content="Welcome to the homepage of All Service"
+          name="All Service Page"
+          content="Welcome to the all Service of Review system"
         />
       </Helmet>
+
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold text-gray-900 ">
