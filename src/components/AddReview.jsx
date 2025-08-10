@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router";
 import LoadingSpinner from "../pages/LoadingSpinner";
 import useAxiosSecure from "../hook/AxiosSecure";
 
-const AddReview = ({ service, setService, allReviews, setAllReviews }) => {
+const AddReview = ({ service, allReviews, setAllReviews }) => {
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(null);
@@ -15,8 +15,6 @@ const AddReview = ({ service, setService, allReviews, setAllReviews }) => {
   const axiosSecure = useAxiosSecure();
 
   const location = useLocation();
-
-  // console.log(service);
 
   const handleSubmit = () => {
     if (!user) {
@@ -42,13 +40,6 @@ const AddReview = ({ service, setService, allReviews, setAllReviews }) => {
     axiosSecure
       .post("/review", newReview)
       .then(() => {
-        const updateService = {
-          ...service,
-          rating: newReview.rating,
-          reviewCount: service.reviewCount + 1,
-        };
-        setService(updateService);
-
         const updateReview = [...allReviews, newReview];
         setAllReviews(updateReview);
 

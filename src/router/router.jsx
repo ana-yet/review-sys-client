@@ -65,8 +65,6 @@ const router = createBrowserRouter([
       },
       {
         path: "services/:id",
-        loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_SERVER_API}/services/${params.id}`),
         Component: ServiceDetails,
       },
       {
