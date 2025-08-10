@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import {
   FaStar,
   FaRegStar,
@@ -14,22 +15,26 @@ import useAuth from "../hook/useAuth";
 import { toast } from "react-toastify";
 import { nanoid } from "nanoid";
 import useAxiosSecure from "../hook/AxiosSecure";
+import axios from "axios";
+import LoadingSpinner from "../pages/LoadingSpinner";
 
-const Review = ({ allReviews }) => {
-  const [reviews, setReviews] = useState([]);
+const Review = ({ service }) => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  useEffect(() => {
-    if (Array.isArray(allReviews)) {
-      setReviews(allReviews);
-    } else {
-      setReviews([]);
-    }
-  }, [allReviews]);
-
-  // console.log("default", allReviews);
-  // console.log("after state ", reviews);
+  const {
+    data: reviews = [],
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["reviews"],
+    queryFn: async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_SERVER_API}/reviews?id=${service._id}`
+      );
+      return data;
+    },
+  });
 
   const [isEditing, setIsEditing] = useState(null);
   const [editText, setEditText] = useState("");
@@ -41,7 +46,6 @@ const Review = ({ allReviews }) => {
   };
 
   const handleDelete = (id) => {
-    // console.log(id);
     if (!id) {
       return toast.warning(
         "You can't delete your latest review without refresh the page! Please refresh the page!"
@@ -60,7 +64,6 @@ const Review = ({ allReviews }) => {
         axiosSecure
           .delete(`/review/${id}`)
           .then(() => {
-            setReviews(reviews.filter((review) => review._id !== id));
             Swal.fire("Deleted!", "Your review has been deleted.", "success");
           })
           .catch(() => toast.error("Failed to delete"));
@@ -75,8 +78,6 @@ const Review = ({ allReviews }) => {
   };
 
   const saveEdit = (id) => {
-    // console.log(editRating, editText);
-
     if (!id) {
       return toast.warning("Please reload the page for edit the review!");
     }
@@ -87,13 +88,6 @@ const Review = ({ allReviews }) => {
         text: editText,
       })
       .then(() => {
-        setReviews(
-          reviews.map((review) =>
-            review._id === id
-              ? { ...review, text: editText, rating: editRating }
-              : review
-          )
-        );
         setIsEditing(null);
 
         Swal.fire({
@@ -109,7 +103,7 @@ const Review = ({ allReviews }) => {
       });
   };
 
-  if (!allReviews || allReviews.length === 0) {
+  if (!reviews || reviews.length === 0) {
     return (
       <div className="text-center py-12">
         <h3 className="text-xl font-medium text-gray-500">No reviews yet</h3>
@@ -144,6 +138,20 @@ const Review = ({ allReviews }) => {
     );
   };
 
+  if (isLoading && !error) {
+    return <LoadingSpinner />;
+  }
+
+  if (!isLoading && error) {
+    return (
+      <div>
+        <p className=" text-base text-red-500 font-medium text-center">
+          error to fetch data : {error}
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className=" py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -162,7 +170,7 @@ const Review = ({ allReviews }) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reviews.map((review, i) => (
+          {reviews?.map((review, i) => (
             <div
               key={i}
               className="bg-white rounded-xl shadow-md overflow-hidden"

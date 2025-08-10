@@ -32,7 +32,7 @@ const ServiceDetails = () => {
       <Helmet>
         <title>Details | Review System</title>
         <meta
-          name="description"
+          name="Service Review details"
           content="Welcome to the Details of Review System"
         />
       </Helmet>
@@ -43,7 +43,7 @@ const ServiceDetails = () => {
 
       <ServiceDetailsCard service={service} />
 
-      <Review allReviews={allReviews} />
+      <Review service={service} />
 
       <AddReview
         service={service}
