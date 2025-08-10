@@ -89,8 +89,8 @@ const RecentReviews = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-stretch mt-10">
           <FeaturedInfoPanel
-            stats={reviews.stats}
-            latestReview={reviews.latestReviews[0]}
+            stats={reviews?.stats}
+            latestReview={reviews?.latestReviews[0]}
           />
 
           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4 content-start">

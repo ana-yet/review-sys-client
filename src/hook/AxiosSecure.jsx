@@ -8,7 +8,7 @@ const axiosSecure = axios.create({
 
 const useAxiosSecure = () => {
   const { user } = useAuth();
-  const token = user.accessToken;
+  const token = user?.accessToken;
 
   useEffect(() => {
     const requestInterceptor = axiosSecure.interceptors.request.use(

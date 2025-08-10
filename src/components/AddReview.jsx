@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router";
 import LoadingSpinner from "../pages/LoadingSpinner";
 import useAxiosSecure from "../hook/AxiosSecure";
 
-const AddReview = ({ service, allReviews, setAllReviews }) => {
+const AddReview = ({ service }) => {
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(null);
@@ -40,9 +40,6 @@ const AddReview = ({ service, allReviews, setAllReviews }) => {
     axiosSecure
       .post("/review", newReview)
       .then(() => {
-        const updateReview = [...allReviews, newReview];
-        setAllReviews(updateReview);
-
         setReviewText("");
         setRating(0);
         setHover(null);

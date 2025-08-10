@@ -202,7 +202,7 @@ const Review = ({ service }) => {
                     </div>
                   </div>
 
-                  {user.email === review.email && (
+                  {user?.email === review?.email && (
                     <div className="flex space-x-2">
                       <button
                         onClick={() => handleEdit(review)}
