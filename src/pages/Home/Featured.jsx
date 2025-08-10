@@ -4,7 +4,6 @@ import { nanoid } from "nanoid";
 
 const Featured = () => {
   const [data, setData] = useState([]);
-  console.log(data);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_SERVER_API}/featured`)
@@ -18,7 +17,10 @@ const Featured = () => {
         <h1 className="text-3xl font-bold  text-center ">
           Customer <span className="text-indigo-400">Favorites</span>
         </h1>
-        <p className="max-w-20 mx-auto border-4 border-indigo-400 rounded-full my-4"></p>
+        <p className="max-w-20 mx-auto border-2 border-indigo-400 rounded-full my-2"></p>
+        <p className="mt-4 text-lg text-gray-600 max-w-2xl text-center mx-auto">
+          Top-Rated Picks Loved by Our Community
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 mt-10">

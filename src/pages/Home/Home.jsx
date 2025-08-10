@@ -6,6 +6,7 @@ import Featured from "./Featured";
 import WhyUs from "./WhyUs";
 import HowItWorks from "./HowItWork";
 import { Helmet } from "react-helmet-async";
+import RecentReviews from "./RecentReview/RecentReview";
 
 const Home = () => {
   const [statsData, setStatsData] = useState([]);
@@ -32,6 +33,8 @@ const Home = () => {
       <Featured />
 
       <Partners />
+
+      <RecentReviews />
 
       <WhyUs />
 

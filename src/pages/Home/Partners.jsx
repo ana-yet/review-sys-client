@@ -50,10 +50,15 @@ const ourPartners = [
 const Partners = () => {
   return (
     <section className="py-22 max-w-7xl mx-auto ">
-      <h2 className="text-center text-3xl font-bold py-6">
-        Meet Our <span className="text-indigo-400">Partners</span>
-        <p className="max-w-20 mx-auto  border-4 border-indigo-400 rounded-full my-4"></p>
-      </h2>
+      <div className="pb-10">
+        <h2 className="text-center text-3xl font-bold ">
+          Meet Our <span className="text-indigo-400">Partners</span>
+        </h2>
+        <p className="max-w-20 mx-auto  border-2 border-indigo-400 rounded-full my-2"></p>
+        <p className="mt-4 text-lg text-gray-600 max-w-2xl text-center mx-auto">
+          Powering Progress Through Meaningful Collaboration
+        </p>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0">
         {ourPartners.map((partner, index) => (
           <div

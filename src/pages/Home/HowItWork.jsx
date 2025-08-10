@@ -69,7 +69,7 @@ const HowItWorks = () => {
         >
           <h2 className="text-3xl font-bold text-gray-800">
             How It <span className="text-indigo-400">Works</span>
-            <p className="max-w-20 mx-auto  border-4 border-indigo-400 rounded-full my-4"></p>
+            <p className="max-w-20 mx-auto  border-2 border-indigo-400 rounded-full my-2"></p>
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
             Get the most out of our service review platform in just three simple
