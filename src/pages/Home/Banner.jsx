@@ -108,9 +108,17 @@ const Banner = ({ slides = slideData, autoPlayInterval = 5000 }) => {
 
   const { id, image, headline, subtext, cta, ctaLink } = slides[currentSlide];
 
+  // Preload images for better performance
+  useEffect(() => {
+    slides.forEach(slide => {
+      const img = new Image();
+      img.src = slide.image;
+    });
+  }, [slides]);
+
   return (
     <div
-      className="relative w-full h-[calc(100vh-25vh)] overflow-hidden mb-16"
+      className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -124,19 +132,19 @@ const Banner = ({ slides = slideData, autoPlayInterval = 5000 }) => {
           exit="exit"
           transition={{
             x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 },
+            opacity: { duration: 0.3 },
           }}
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${image})`,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${image})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}
         >
-          <div className="w-full h-full bg-black/50 flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center">
             <motion.div
-              className="px-6 text-white max-w-3xl text-center"
+              className="px-4 md:px-6 text-white max-w-4xl text-center"
               variants={textContainerVariants}
               initial="hidden"
               animate="visible"
@@ -144,20 +152,20 @@ const Banner = ({ slides = slideData, autoPlayInterval = 5000 }) => {
             >
               <motion.h1
                 variants={textItemVariants}
-                className="text-4xl md:text-5xl font-bold mb-4"
+                className="text-3xl md:text-5xl font-bold mb-4 leading-tight"
               >
                 {headline}
               </motion.h1>
               <motion.p
                 variants={textItemVariants}
-                className="text-xl md:text-2xl mb-8"
+                className="text-lg md:text-xl mb-8 max-w-2xl mx-auto"
               >
                 {subtext}
               </motion.p>
               <motion.div variants={textItemVariants}>
                 <Link
                   to={ctaLink}
-                  className="inline-block px-8 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-medium text-lg transition-colors shadow-lg"
+                  className="inline-block px-6 py-3 bg-white text-indigo-600 hover:bg-gray-100 rounded-lg font-medium text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   {cta}
                 </Link>
@@ -169,15 +177,17 @@ const Banner = ({ slides = slideData, autoPlayInterval = 5000 }) => {
 
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full z-20"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-full z-20 backdrop-blur-sm transition-all"
+        aria-label="Previous slide"
       >
-        <FiChevronLeft size={24} />
+        <FiChevronLeft size={20} className="md:w-6 md:h-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full z-20"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-full z-20 backdrop-blur-sm transition-all"
+        aria-label="Next slide"
       >
-        <FiChevronRight size={24} />
+        <FiChevronRight size={20} className="md:w-6 md:h-6" />
       </button>
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
@@ -185,9 +195,10 @@ const Banner = ({ slides = slideData, autoPlayInterval = 5000 }) => {
           <button
             key={nanoid()}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-white w-6" : "bg-white bg-opacity-50"
+            className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide ? "bg-white w-4 md:w-6" : "bg-white/50"
             }`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
