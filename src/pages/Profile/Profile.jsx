@@ -11,7 +11,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`${import.meta.env.VITE_SERVER_API}/user?email=${user.email}`)
+      fetch(`${import.meta.env.VITE_SERVER_API}/user?email=${user?.email}`)
         .then((res) => res.json())
         .then((data) => {
           setProfile(data);
@@ -37,17 +37,17 @@ const Profile = () => {
         />
       </Helmet>
       <img
-        src={profile.photo}
+        src={profile?.photo}
         alt="User"
         className="w-24 h-24 mx-auto rounded-full object-cover mb-4"
       />
       <h2 className="text-2xl font-semibold flex items-center justify-center gap-2">
-        <FaUser className="text-blue-500" /> {profile.name}
+        <FaUser className="text-blue-500" /> {profile?.name}
       </h2>
       <p className="text-gray-600 flex items-center justify-center gap-2 mt-1">
-        <FaEnvelope className="text-green-500" /> {profile.email}
+        <FaEnvelope className="text-green-500" /> {profile?.email}
       </p>
-      <p className="text-sm text-gray-400 mt-2">User ID: {profile._id}</p>
+      <p className="text-sm text-gray-400 mt-2">User ID: {profile?._id}</p>
     </motion.div>
   );
 };
