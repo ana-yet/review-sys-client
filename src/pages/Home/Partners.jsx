@@ -58,7 +58,7 @@ const Partners = () => {
           Powering progress through meaningful collaboration
         </p>
       </div>
-      
+
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-6">
         {ourPartners.map((partner, index) => (
           <div
@@ -71,7 +71,9 @@ const Partners = () => {
               className="h-12 mb-3 object-contain"
               loading="lazy"
             />
-            <h3 className="text-sm font-semibold text-gray-900">{partner.name}</h3>
+            <h3 className="text-sm font-semibold text-gray-900">
+              {partner.name}
+            </h3>
           </div>
         ))}
       </div>
