@@ -110,7 +110,7 @@ const Banner = ({ slides = slideData, autoPlayInterval = 5000 }) => {
 
   // Preload images for better performance
   useEffect(() => {
-    slides.forEach(slide => {
+    slides.forEach((slide) => {
       const img = new Image();
       img.src = slide.image;
     });
