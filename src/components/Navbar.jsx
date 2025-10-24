@@ -21,7 +21,6 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { userSignOut, user, loading } = useAuth();
-  // console.log(user);
 
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -68,16 +67,22 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="sticky w-full top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+    <nav className="sticky w-full top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-xl font-bold text-gray-900">
-              Service<span className="text-indigo-400">Reviews</span>
+            <Link
+              to="/"
+              className="text-2xl font-bold text-gray-900 flex items-center"
+            >
+              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-2 py-1 rounded-lg mr-2">
+                SR
+              </span>
+              Service<span className="text-indigo-600">Reviews</span>
             </Link>
           </div>
 
-          <div className="hidden md:flex items-center space-x-2">
+          <div className="hidden md:flex items-center space-x-1">
             <NavLink to="/" icon={<FiHome className="mr-1" />} text="Home" />
             <NavLink
               to="/all-services"
@@ -92,7 +97,6 @@ const Navbar = () => {
 
             {!user && (
               <>
-                {" "}
                 <NavLink
                   to="/login"
                   icon={<FiLogIn className="mr-1" />}
@@ -108,7 +112,6 @@ const Navbar = () => {
 
             {user && (
               <>
-                {" "}
                 <NavLink
                   to="/add-service"
                   icon={<FaPlus className="mr-1" />}
@@ -124,22 +127,20 @@ const Navbar = () => {
                   icon={<FiStar className="mr-1" />}
                   text="My Reviews"
                 />
-                <div className="ml-4 flex items-center space-x-4">
+                <div className="ml-2 flex items-center space-x-3">
                   <Link
                     to="/profile"
-                    className="flex rounded-full items-center text-gray-500 hover:text-blue-600"
+                    className="flex rounded-full items-center text-gray-700 hover:text-indigo-600 transition-colors"
                   >
-                    {(
-                      <img
-                        className="overflow-hidden w-10 h-10 rounded-full object-cover"
-                        src={user?.photoURL}
-                        alt={user.displayName}
-                      />
-                    ) || <FaUserCircle className="h-6 w-6" />}
+                    <img
+                      className="overflow-hidden w-10 h-10 rounded-full object-cover ring-2 ring-indigo-200"
+                      src={user?.photoURL}
+                      alt={user.displayName}
+                    />
                   </Link>
                   <button
                     onClick={handleSingOut}
-                    className="flex items-center text-gray-500 hover:text-red-500"
+                    className="flex items-center text-gray-700 hover:text-red-500 transition-colors"
                   >
                     <FaSignOutAlt className="h-5 w-5 mr-1" />
                     <span>Logout</span>
@@ -152,7 +153,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-blue-600 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-indigo-600 focus:outline-none"
             >
               {isOpen ? (
                 <FaTimes className="h-6 w-6" />
@@ -177,10 +178,14 @@ const Navbar = () => {
               icon={<FiTool className="mr-2" />}
               text="Services"
             />
+            <MobileNavLink
+              to="/about-us"
+              icon={<FaUsers className="mr-2" />}
+              text="About Us"
+            />
 
             {!user && (
               <>
-                {" "}
                 <MobileNavLink
                   to="/login"
                   icon={<FiLogIn className="mr-2" />}
@@ -196,7 +201,6 @@ const Navbar = () => {
 
             {user && (
               <>
-                {" "}
                 <MobileNavLink
                   to="/add-service"
                   icon={<FaPlus className="mr-2" />}
@@ -218,7 +222,10 @@ const Navbar = () => {
                     icon={<FaUserCircle className="mr-2" />}
                     text="Profile"
                   />
-                  <button className="w-full flex items-center px-3 py-2 text-base font-medium text-gray-600 hover:text-red-500">
+                  <button
+                    onClick={handleSingOut}
+                    className="w-full flex items-center px-3 py-2 text-base font-medium text-gray-700 hover:text-red-500"
+                  >
                     <FaSignOutAlt className="mr-2" />
                     Logout
                   </button>
@@ -239,10 +246,10 @@ const NavLink = ({ to, icon, text }) => {
   return (
     <Link
       to={to}
-      className={`flex items-center px-3 py-2 text-sm font-medium rounded-md ${
+      className={`flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-all ${
         isActive
-          ? "text-blue-600 bg-blue-50"
-          : "text-gray-500 hover:text-blue-600 hover:bg-gray-50"
+          ? "text-indigo-600 bg-indigo-50"
+          : "text-gray-700 hover:text-indigo-600 hover:bg-gray-50"
       }`}
     >
       {icon}
@@ -258,10 +265,10 @@ const MobileNavLink = ({ to, icon, text }) => {
   return (
     <Link
       to={to}
-      className={`flex items-center px-3 py-2 rounded-md text-base font-medium ${
+      className={`flex items-center px-3 py-2 rounded-md text-base font-medium transition-colors ${
         isActive
-          ? "text-blue-600 bg-blue-50"
-          : "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
+          ? "text-indigo-600 bg-indigo-50"
+          : "text-gray-700 hover:text-indigo-600 hover:bg-gray-50"
       }`}
     >
       {icon}

@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { AiFillStar } from "react-icons/ai";
 import { Link } from "react-router";
 import { nanoid } from "nanoid";
@@ -9,13 +8,7 @@ const ReviewCard = ({ review }) => {
     review;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
-      transition={{ duration: 0.3 }}
-      className="bg-white rounded-2xl p-6 mb-6 border border-gray-100"
-    >
+    <div className="bg-white rounded-2xl p-6 mb-6 border border-gray-100 hover:shadow-lg transition-all duration-300">
       <div className="flex items-center gap-4 mb-4">
         <img
           src={photo}
@@ -23,7 +16,9 @@ const ReviewCard = ({ review }) => {
           className="w-12 h-12 rounded-full object-cover ring-2 ring-indigo-100"
         />
         <div>
-          <h3 className="text-xl font-semibold text-gray-900">{serviceTitle}</h3>
+          <h3 className="text-xl font-semibold text-gray-900">
+            {serviceTitle}
+          </h3>
           <p className="text-sm text-gray-500">
             Reviewed by {name} • {new Date(date).toLocaleDateString()}
           </p>
@@ -57,7 +52,7 @@ const ReviewCard = ({ review }) => {
           Review ID: {_id.slice(0, 8)}...
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
