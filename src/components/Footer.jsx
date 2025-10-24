@@ -73,8 +73,12 @@ const Footer = () => {
             >
               Service<span className="text-indigo-400">Reviews</span>
             </motion.div>
-            <motion.p variants={itemVariants} className="text-gray-400 max-w-md">
-              Honest reviews for quality services. Helping you make informed decisions with trusted feedback from real users.
+            <motion.p
+              variants={itemVariants}
+              className="text-gray-400 max-w-md"
+            >
+              Honest reviews for quality services. Helping you make informed
+              decisions with trusted feedback from real users.
             </motion.p>
           </motion.div>
 
