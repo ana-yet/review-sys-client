@@ -6,7 +6,7 @@ import { FiX, FiPlus, FiBarChart2, FiLoader } from "react-icons/fi";
 const ServiceComparison = ({ services = [] }) => {
   const navigate = useNavigate();
   const [selectedServices, setSelectedServices] = useState([]);
-  const { comparisonData, loading, error, compareServices } = useServiceComparison();
+  const { loading, error, compareServices } = useServiceComparison();
 
   // Initialize with first two services if available
   useEffect(() => {
