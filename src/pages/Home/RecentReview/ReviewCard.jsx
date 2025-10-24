@@ -3,52 +3,65 @@ import { useNavigate } from "react-router";
 
 const ReviewCard = ({ review }) => {
   const navigate = useNavigate();
+  
+  // Add default values to prevent errors
+  const safeReview = review || { 
+    name: "User", 
+    photo: "", 
+    rating: 0, 
+    serviceTitle: "Service", 
+    text: "No review text", 
+    serviceId: "", 
+    date: new Date() 
+  };
+
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col">
+    <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 flex flex-col h-full">
       <div className="flex items-center mb-3">
         <img
-          src={review.photo}
-          alt={review.name}
-          className="w-12 h-12 rounded-full mr-4 shadow-sm"
+          src={safeReview.photo}
+          alt={safeReview.name}
+          className="w-10 h-10 rounded-full mr-3 shadow-sm object-cover"
+          loading="lazy"
         />
         <div>
-          <h4 className="font-bold text-gray-800">{review.name}</h4>
-          <div className="flex items-center">
+          <h4 className="font-semibold text-gray-900 text-sm">{safeReview.name}</h4>
+          <div className="flex items-center mt-1">
             {[...Array(5)].map((_, i) => (
               <FaStar
                 key={i}
-                className={`w-4 h-4 ${
-                  i < review.rating ? "text-yellow-400" : "text-gray-300"
+                className={`w-3 h-3 ${
+                  i < safeReview.rating ? "text-yellow-400" : "text-gray-300"
                 }`}
               />
             ))}
             <span className="text-xs text-gray-500 ml-2">
-              {review.rating}.0/5.0
+              {safeReview.rating}.0
             </span>
           </div>
         </div>
       </div>
 
-      <div className="border-t my-4"></div>
+      <div className="border-t border-gray-100 my-3"></div>
 
       <div className="flex-grow">
-        <h3 className="font-semibold text-indigo-600 text-md mb-2">
-          "{review.serviceTitle}"
+        <h3 className="font-semibold text-indigo-600 text-sm mb-2 truncate">
+          "{safeReview.serviceTitle}"
         </h3>
-        <p className="text-gray-600 text-sm leading-relaxed">{review.text}</p>
+        <p className="text-gray-600 text-xs leading-relaxed line-clamp-3">{safeReview.text}</p>
       </div>
 
-      <div className="mt-6 flex justify-between items-center">
+      <div className="mt-4 flex justify-between items-center">
         <button
-          onClick={() => navigate(`/services/${review.serviceId}`)}
-          className="px-4 py-2 border border-gray-300 text-gray-700 text-xs font-bold rounded-md hover:bg-gray-100 transition-colors"
+          onClick={() => navigate(`/services/${safeReview.serviceId}`)}
+          className="px-3 py-1.5 bg-indigo-50 text-indigo-600 text-xs font-semibold rounded-lg hover:bg-indigo-100 transition-colors"
         >
-          View Service
+          View
         </button>
         <p className="text-xs text-gray-500">
-          {new Date(review.date).toLocaleDateString("en-US", {
-            month: "long",
-            year: "numeric",
+          {new Date(safeReview.date).toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
           })}
         </p>
       </div>

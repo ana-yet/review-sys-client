@@ -14,10 +14,16 @@ const FeaturedInfoPanel = ({ stats, latestReview }) => {
 
   // Add default values to prevent errors
   const safeStats = stats || { totalReviews: 0, goodReviews: 0, badReviews: 0 };
-  const safeReview = latestReview || { name: "User", serviceTitle: "Service", rating: 0 };
+  const safeReview = latestReview || {
+    name: "User",
+    serviceTitle: "Service",
+    rating: 0,
+  };
 
   const goodReviewPercentage =
-    safeStats.totalReviews > 0 ? (safeStats.goodReviews / safeStats.totalReviews) * 100 : 0;
+    safeStats.totalReviews > 0
+      ? (safeStats.goodReviews / safeStats.totalReviews) * 100
+      : 0;
 
   return (
     <div className="lg:col-span-1 bg-gradient-to-br from-indigo-500 via-indigo-600 to-purple-700 text-white p-6 rounded-2xl shadow-xl flex flex-col h-full">
