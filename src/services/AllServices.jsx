@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ServiceCard from "../components/ServiceCard";
+import ServiceComparison from "../components/ServiceComparison";
 import { FaSearch, FaSpinner, FaExclamationTriangle } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -156,6 +157,9 @@ const AllServices = () => {
 
         {!loading && !error && (
           <>
+            {/* Service Comparison Component */}
+            <ServiceComparison services={services} />
+
             {filteredServices.length > 0 ? (
               style === "card" ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

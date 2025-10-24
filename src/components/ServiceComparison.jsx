@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { motion } from "framer-motion";
 import { FiX, FiPlus, FiBarChart2 } from "react-icons/fi";
 
 const ServiceComparison = ({ services = [] }) => {
   const navigate = useNavigate();
   const [selectedServices, setSelectedServices] = useState([]);
-  const [comparisonData, setComparisonData] = useState([]);
 
   // Initialize with first two services if available
   useEffect(() => {
@@ -15,18 +13,17 @@ const ServiceComparison = ({ services = [] }) => {
     }
   }, [services]);
 
-  // Update comparison data when selected services change
-  useEffect(() => {
-    setComparisonData(selectedServices);
-  }, [selectedServices]);
-
   const addServiceToCompare = () => {
-    if (selectedServices.length < 4 && services.length > selectedServices.length) {
+    if (
+      selectedServices.length < 4 &&
+      services.length > selectedServices.length
+    ) {
       // Find the first service not already selected
       const availableServices = services.filter(
-        service => !selectedServices.some(selected => selected._id === service._id)
+        (service) =>
+          !selectedServices.some((selected) => selected._id === service._id)
       );
-      
+
       if (availableServices.length > 0) {
         setSelectedServices([...selectedServices, availableServices[0]]);
       }
@@ -35,7 +32,9 @@ const ServiceComparison = ({ services = [] }) => {
 
   const removeServiceFromCompare = (serviceId) => {
     if (selectedServices.length > 2) {
-      setSelectedServices(selectedServices.filter(service => service._id !== serviceId));
+      setSelectedServices(
+        selectedServices.filter((service) => service._id !== serviceId)
+      );
     }
   };
 
@@ -45,7 +44,9 @@ const ServiceComparison = ({ services = [] }) => {
         {[...Array(5)].map((_, i) => (
           <svg
             key={i}
-            className={`w-4 h-4 ${i < rating ? "text-yellow-400" : "text-gray-300"}`}
+            className={`w-4 h-4 ${
+              i < rating ? "text-yellow-400" : "text-gray-300"
+            }`}
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -61,7 +62,9 @@ const ServiceComparison = ({ services = [] }) => {
     return (
       <div className="text-center py-10">
         <FiBarChart2 className="mx-auto h-12 w-12 text-gray-400" />
-        <h3 className="mt-2 text-lg font-medium text-gray-900">Not enough services</h3>
+        <h3 className="mt-2 text-lg font-medium text-gray-900">
+          Not enough services
+        </h3>
         <p className="mt-1 text-gray-500">
           You need at least 2 services to compare them.
         </p>
@@ -75,9 +78,13 @@ const ServiceComparison = ({ services = [] }) => {
         <h2 className="text-2xl font-bold text-gray-900">Compare Services</h2>
         <button
           onClick={addServiceToCompare}
-          disabled={selectedServices.length >= 4 || selectedServices.length >= services.length}
+          disabled={
+            selectedServices.length >= 4 ||
+            selectedServices.length >= services.length
+          }
           className={`flex items-center px-4 py-2 rounded-lg ${
-            selectedServices.length >= 4 || selectedServices.length >= services.length
+            selectedServices.length >= 4 ||
+            selectedServices.length >= services.length
               ? "bg-gray-200 text-gray-500 cursor-not-allowed"
               : "bg-indigo-600 text-white hover:bg-indigo-700"
           }`}
@@ -90,7 +97,9 @@ const ServiceComparison = ({ services = [] }) => {
       {selectedServices.length === 0 ? (
         <div className="text-center py-10">
           <FiBarChart2 className="mx-auto h-12 w-12 text-gray-400" />
-          <h3 className="mt-2 text-lg font-medium text-gray-900">No services selected</h3>
+          <h3 className="mt-2 text-lg font-medium text-gray-900">
+            No services selected
+          </h3>
           <p className="mt-1 text-gray-500">
             Select services to compare their features.
           </p>
@@ -117,8 +126,12 @@ const ServiceComparison = ({ services = [] }) => {
                           <FiX className="h-3 w-3" />
                         </button>
                       </div>
-                      <h3 className="font-semibold mt-2 text-center">{service.serviceTitle}</h3>
-                      <p className="text-sm text-gray-500 text-center">{service.companyName}</p>
+                      <h3 className="font-semibold mt-2 text-center">
+                        {service.serviceTitle}
+                      </h3>
+                      <p className="text-sm text-gray-500 text-center">
+                        {service.companyName}
+                      </p>
                     </div>
                   </th>
                 ))}
@@ -157,7 +170,9 @@ const ServiceComparison = ({ services = [] }) => {
                 <td className="p-4 font-medium">Reviews</td>
                 {selectedServices.map((service) => (
                   <td key={service._id} className="p-4 text-center">
-                    <span className="text-gray-700">{service.reviewCount || 0} reviews</span>
+                    <span className="text-gray-700">
+                      {service.reviewCount || 0} reviews
+                    </span>
                   </td>
                 ))}
               </tr>
