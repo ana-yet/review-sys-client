@@ -7,6 +7,7 @@ import {
   FaBars,
   FaTimes,
   FaUsers,
+  FaBalanceScale,
 } from "react-icons/fa";
 import {
   FiHome,
@@ -88,6 +89,11 @@ const Navbar = () => {
               to="/all-services"
               icon={<FiTool className="mr-1" />}
               text="Services"
+            />
+            <NavLink
+              to="/services/compare"
+              icon={<FaBalanceScale className="mr-1" />}
+              text="Compare"
             />
             <NavLink
               to="/about-us"
@@ -177,6 +183,11 @@ const Navbar = () => {
               to="/all-services"
               icon={<FiTool className="mr-2" />}
               text="Services"
+            />
+            <MobileNavLink
+              to="/services/compare"
+              icon={<FaBalanceScale className="mr-2" />}
+              text="Compare"
             />
             <MobileNavLink
               to="/about-us"

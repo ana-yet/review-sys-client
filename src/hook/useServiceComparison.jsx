@@ -15,13 +15,16 @@ const useServiceComparison = () => {
     setError(null);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_SERVER_API}/services/compare`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ serviceIds }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_SERVER_API}/services/compare`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ serviceIds }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to compare services");

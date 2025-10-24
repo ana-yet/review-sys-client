@@ -17,8 +17,12 @@ import AboutUs from "../pages/About Us/AboutUs";
 const ServiceComparisonPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">Service Comparison</h1>
-      <p className="text-gray-600 mb-8">Compare different services side by side to make the best decision.</p>
+      <h1 className="text-3xl font-bold text-gray-900 mb-6">
+        Service Comparison
+      </h1>
+      <p className="text-gray-600 mb-8">
+        Compare different services side by side to make the best decision.
+      </p>
       <AllServices />
     </div>
   );
