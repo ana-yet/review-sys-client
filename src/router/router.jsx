@@ -13,6 +13,17 @@ import PrivateRoute from "../context/PrivateRoute";
 import ErrorPage from "../pages/ErrorPage";
 import AboutUs from "../pages/About Us/AboutUs";
 
+// Create a new component for Service Comparison page
+const ServiceComparisonPage = () => {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold text-gray-900 mb-6">Service Comparison</h1>
+      <p className="text-gray-600 mb-8">Compare different services side by side to make the best decision.</p>
+      <AllServices />
+    </div>
+  );
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,7 +44,11 @@ const router = createBrowserRouter([
       },
       {
         path: "all-services",
-        element: <AllServices />,
+        Component: AllServices,
+      },
+      {
+        path: "services/compare",
+        Component: ServiceComparisonPage,
       },
       {
         path: "about-us",
