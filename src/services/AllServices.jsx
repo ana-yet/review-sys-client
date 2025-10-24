@@ -16,7 +16,6 @@ const AllServices = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [list, setList] = useState(false);
   const [style, setStyle] = useState("card");
 
   useEffect(() => {
@@ -45,9 +44,10 @@ const AllServices = () => {
         setServices(data.services);
         setFilteredServices(data.services);
         setCategories(["all", ...data.categories]);
-      } catch (err) {
+      } catch (error) {
         setError("Failed to load services.");
         toast.error("Failed to load services!", { position: "top-right" });
+        console.error("Error fetching services:", error);
       } finally {
         setLoading(false);
       }
