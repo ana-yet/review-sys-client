@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
-import { nanoid } from "nanoid";
 
 const Footer = () => {
   const containerVariants = {
@@ -10,24 +9,19 @@ const Footer = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.3,
+        delayChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: {
-      opacity: 0,
-      scaleX: 0.1,
-      transformOrigin: "left",
-    },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
-      scaleX: 1,
+      y: 0,
       transition: {
-        type: "spring",
-        stiffness: 50,
-        damping: 10,
+        duration: 0.5,
+        ease: "easeOut",
       },
     },
   };
@@ -38,9 +32,14 @@ const Footer = () => {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1 + 0.5,
+        delay: i * 0.1 + 0.3,
       },
     }),
+    hover: {
+      y: -5,
+      scale: 1.1,
+      transition: { type: "spring", stiffness: 400 },
+    },
   };
 
   const links = [
@@ -58,7 +57,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-12 pb-6 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-gray-900 text-gray-400 pt-16 pb-8 px-4 sm:px-6 lg:px-8">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -66,7 +65,7 @@ const Footer = () => {
         variants={containerVariants}
         className="max-w-7xl mx-auto"
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <motion.div variants={itemVariants} className="space-y-4">
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -74,29 +73,28 @@ const Footer = () => {
             >
               Service<span className="text-indigo-400">Reviews</span>
             </motion.div>
-            <motion.p variants={itemVariants} className="text-gray-400">
-              Honest reviews for quality services
+            <motion.p variants={itemVariants} className="text-gray-400 max-w-md">
+              Honest reviews for quality services. Helping you make informed decisions with trusted feedback from real users.
             </motion.p>
           </motion.div>
 
           <motion.nav variants={itemVariants}>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
               Navigation
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {links.map((link, index) => (
                 <motion.li
-                  key={nanoid()}
+                  key={index}
                   variants={itemVariants}
                   custom={index}
+                  whileHover={{ x: 5 }}
                 >
                   <Link
                     to={link.path}
-                    className="text-gray-400 hover:text-white transition-colors flex items-center"
+                    className="text-gray-400 hover:text-white transition-colors flex items-center text-sm"
                   >
-                    <motion.span whileHover={{ x: 4 }} className="inline-block">
-                      {link.name}
-                    </motion.span>
+                    {link.name}
                   </Link>
                 </motion.li>
               ))}
@@ -104,23 +102,19 @@ const Footer = () => {
           </motion.nav>
 
           <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">
               Connect With Us
             </h3>
-            <motion.div className="flex space-x-4">
+            <motion.div className="flex space-x-5">
               {socialIcons.map((social, i) => (
                 <motion.a
-                  key={nanoid()}
+                  key={i}
                   variants={socialVariants}
                   custom={i}
                   href="#"
                   aria-label={social.name}
                   className="text-gray-400 hover:text-white text-xl transition-colors"
-                  whileHover={{
-                    y: -4,
-                    scale: 1.2,
-                    color: "#818cf8",
-                  }}
+                  whileHover="hover"
                 >
                   {social.icon}
                 </motion.a>
@@ -131,9 +125,9 @@ const Footer = () => {
 
         <motion.div
           variants={itemVariants}
-          className="mt-12 pt-6 border-t border-gray-800 text-center text-sm text-gray-500"
+          className="mt-16 pt-8 border-t border-gray-800 text-center text-sm text-gray-500"
         >
-          © {new Date().getFullYear()} ReviewService. All rights reserved.
+          © {new Date().getFullYear()} ServiceReviews. All rights reserved.
         </motion.div>
       </motion.div>
     </footer>

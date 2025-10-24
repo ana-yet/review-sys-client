@@ -62,7 +62,9 @@ const FeaturedCard = ({ dat }) => {
               {[...Array(5)].map((_, i) => (
                 <FaStar
                   key={i}
-                  className={`w-3 h-3 ${i < rating ? "fill-current" : "text-gray-300"}`}
+                  className={`w-3 h-3 ${
+                    i < rating ? "fill-current" : "text-gray-300"
+                  }`}
                 />
               ))}
             </div>
