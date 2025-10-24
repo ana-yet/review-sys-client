@@ -71,12 +71,10 @@ const Register = () => {
       );
     }
 
-    console.log(formData);
-
     createEmailUser(formData.email, formData.password)
       .then(() => {
         axios
-          .post("http://localhost:3000/user", {
+          .post(`${import.meta.env.VITE_SERVER_API}/user`, {
             email: formData.email,
             name: formData.name,
             photo: formData.photo,
