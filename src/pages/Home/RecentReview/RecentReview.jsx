@@ -81,7 +81,8 @@ const RecentReviews = () => {
         </h2>
         <div className="w-20 h-1 bg-indigo-600 rounded-full mx-auto mt-4"></div>
         <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
-          Unfiltered opinions from the front lines - fresh takes on today's services
+          Unfiltered opinions from the front lines - fresh takes on today's
+          services
         </p>
       </div>
 
