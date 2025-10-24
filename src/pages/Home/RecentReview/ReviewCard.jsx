@@ -3,16 +3,16 @@ import { useNavigate } from "react-router";
 
 const ReviewCard = ({ review }) => {
   const navigate = useNavigate();
-  
+
   // Add default values to prevent errors
-  const safeReview = review || { 
-    name: "User", 
-    photo: "", 
-    rating: 0, 
-    serviceTitle: "Service", 
-    text: "No review text", 
-    serviceId: "", 
-    date: new Date() 
+  const safeReview = review || {
+    name: "User",
+    photo: "",
+    rating: 0,
+    serviceTitle: "Service",
+    text: "No review text",
+    serviceId: "",
+    date: new Date(),
   };
 
   return (
@@ -25,7 +25,9 @@ const ReviewCard = ({ review }) => {
           loading="lazy"
         />
         <div>
-          <h4 className="font-semibold text-gray-900 text-sm">{safeReview.name}</h4>
+          <h4 className="font-semibold text-gray-900 text-sm">
+            {safeReview.name}
+          </h4>
           <div className="flex items-center mt-1">
             {[...Array(5)].map((_, i) => (
               <FaStar
@@ -48,7 +50,9 @@ const ReviewCard = ({ review }) => {
         <h3 className="font-semibold text-indigo-600 text-sm mb-2 truncate">
           "{safeReview.serviceTitle}"
         </h3>
-        <p className="text-gray-600 text-xs leading-relaxed line-clamp-3">{safeReview.text}</p>
+        <p className="text-gray-600 text-xs leading-relaxed line-clamp-3">
+          {safeReview.text}
+        </p>
       </div>
 
       <div className="mt-4 flex justify-between items-center">
