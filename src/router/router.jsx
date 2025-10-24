@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../layout/MainLayout";
-import Home from "../pages/Home/Home";
 import Register from "../pages/auth/Register";
 import Login from "../pages/auth/Login";
 import AddService from "../services/AddService";
@@ -12,17 +11,14 @@ import Profile from "../pages/Profile/Profile";
 import PrivateRoute from "../context/PrivateRoute";
 import ErrorPage from "../pages/ErrorPage";
 import AboutUs from "../pages/About Us/AboutUs";
+import ModernHome from "../pages/Home/ModernHome";
 
 // Create a new component for Service Comparison page
 const ServiceComparisonPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">
-        Service Comparison
-      </h1>
-      <p className="text-gray-600 mb-8">
-        Compare different services side by side to make the best decision.
-      </p>
+      <h1 className="text-3xl font-bold text-gray-900 mb-6">Service Comparison</h1>
+      <p className="text-gray-600 mb-8">Compare different services side by side to make the best decision.</p>
       <AllServices />
     </div>
   );
@@ -36,7 +32,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: Home,
+        Component: ModernHome,
       },
       {
         path: "add-service",
