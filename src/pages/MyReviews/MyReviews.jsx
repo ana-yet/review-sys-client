@@ -4,6 +4,7 @@ import ReviewCard from "../../components/ReviewCard";
 import { nanoid } from "nanoid";
 import useAxiosSecure from "../../hook/AxiosSecure";
 import { Helmet } from "react-helmet-async";
+import LoadingSpinner from "../LoadingSpinner";
 
 const MyReviews = () => {
   const axiosSecure = useAxiosSecure();
@@ -25,7 +26,7 @@ const MyReviews = () => {
     }
   }, [user?.email, axiosSecure]);
 
-  if (loading) return <p className="text-center mt-10">Loading reviews...</p>;
+  if (loading) return <LoadingSpinner />;
 
   if (reviews.length === 0) {
     return (

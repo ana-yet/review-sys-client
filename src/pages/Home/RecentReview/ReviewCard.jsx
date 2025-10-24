@@ -41,7 +41,7 @@ const ReviewCard = ({ review }) => {
       <div className="mt-6 flex justify-between items-center">
         <button
           onClick={() => navigate(`/services/${review.serviceId}`)}
-          className="px-4 py-2 border border-gray-300 text-gray-700 text-xs font-bold rounded-full hover:bg-gray-100 transition-colors"
+          className="px-4 py-2 border border-gray-300 text-gray-700 text-xs font-bold rounded-md hover:bg-gray-100 transition-colors"
         >
           View Service
         </button>

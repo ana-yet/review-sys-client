@@ -66,18 +66,16 @@ const FeaturedInfoPanel = ({ stats, latestReview }) => {
           Are you looking for a service?
         </h4>
         <div className="flex flex-col gap-3">
-          {/* Primary Button for all users */}
           <button
-            onClick={() => navigate("/services")}
+            onClick={() => navigate("/all-services")}
             className="w-full bg-white text-indigo-700 font-bold py-3 px-6 rounded-lg hover:bg-purple-200 transition-all transform hover:scale-105"
           >
             Browse All Services
           </button>
 
-          {/* Conditional Secondary Button for non-logged-in users */}
           {!user && (
             <button
-              onClick={() => navigate("/login")} // Or your signup route
+              onClick={() => navigate("/login")}
               className="w-full bg-purple-500/40 text-white font-semibold py-3 px-6 rounded-lg border border-purple-400/50 hover:bg-purple-500/60 transition-colors"
             >
               Get Started to Leave a Review

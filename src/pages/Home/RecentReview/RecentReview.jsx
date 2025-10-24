@@ -36,7 +36,7 @@ const RecentReviews = () => {
     isError,
     error,
   } = useQuery({
-    queryKey: ["reviews"],
+    queryKey: ["recebt_reviews"],
     queryFn: async () => {
       const { data } = await axios.get(
         `${import.meta.env.VITE_SERVER_API}/latest-review`

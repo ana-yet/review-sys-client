@@ -19,15 +19,15 @@ import axios from "axios";
 import LoadingSpinner from "../pages/LoadingSpinner";
 
 const Review = ({ service }) => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   const {
-    data: reviews = [],
+    data: reviews,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["reviews"],
+    queryKey: ["reviews", service._id],
     queryFn: async () => {
       const { data } = await axios.get(
         `${import.meta.env.VITE_SERVER_API}/reviews?id=${service._id}`
@@ -138,7 +138,7 @@ const Review = ({ service }) => {
     );
   };
 
-  if (isLoading && !error) {
+  if (loading || isLoading) {
     return <LoadingSpinner />;
   }
 
