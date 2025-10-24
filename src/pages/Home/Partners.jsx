@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid";
 import React from "react";
 
 const ourPartners = [
@@ -49,33 +48,34 @@ const ourPartners = [
 
 const Partners = () => {
   return (
-    <section className="py-22 max-w-7xl mx-auto ">
-      <div className="pb-10">
-        <h2 className="text-center text-3xl font-bold ">
-          Meet Our <span className="text-indigo-400">Partners</span>
+    <div className="max-w-7xl mx-auto px-4">
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          Meet Our <span className="text-indigo-600">Partners</span>
         </h2>
-        <p className="max-w-20 mx-auto  border-2 border-indigo-400 rounded-full my-2"></p>
-        <p className="mt-4 text-lg text-gray-600 max-w-2xl text-center mx-auto">
-          Powering Progress Through Meaningful Collaboration
+        <div className="w-20 h-1 bg-indigo-600 rounded-full mx-auto mt-4"></div>
+        <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
+          Powering progress through meaningful collaboration
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0">
+      
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-6">
         {ourPartners.map((partner, index) => (
           <div
-            key={nanoid()}
-            className="p-4 border border-gray-100 flex flex-col items-center text-center"
+            key={index}
+            className="flex flex-col items-center text-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all duration-300"
           >
             <img
               src={partner.logo}
               alt={partner.name}
-              className="h-16 mb-3 object-contain"
+              className="h-12 mb-3 object-contain"
+              loading="lazy"
             />
-            <h3 className="text-lg font-semibold">{partner.name}</h3>
-            <p className="text-sm text-gray-600">{partner.description}</p>
+            <h3 className="text-sm font-semibold text-gray-900">{partner.name}</h3>
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 
